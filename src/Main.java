@@ -42,13 +42,8 @@ public class Main {
                 opciones,
                 opciones);
 
-        BloqueTipos.getTipos().forEach(
-                (s, conversion) -> {
-                    if (s == selectMenu) {
-                        ObjMenu = conversion;
-                    }
-                }
-        );
+        ObjMenu = BloqueTipos.getTipos().get(selectMenu);
+
         System.out.println(ObjMenu);
         if (selectMenu != null) {
             showCantidad();
