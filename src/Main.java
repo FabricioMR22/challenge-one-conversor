@@ -33,23 +33,14 @@ public class Main {
     public static void showMenu(){
         String[] opciones = BloqueTipos.getTipos().keySet().toArray(new String[0]);
 
-        String selectMenu =(String) JOptionPane.showInputDialog(
-                null,
-                "Seleccione una opción de conversión",
-                "Menu",
-                JOptionPane.PLAIN_MESSAGE,
-                null,
-                opciones,
-                opciones);
-
+        String selectMenu =(String) JOptionPane.showInputDialog(null, "Seleccione una opción de conversión", "Menu", JOptionPane.PLAIN_MESSAGE, null, opciones, opciones);
         ObjMenu = BloqueTipos.getTipos().get(selectMenu);
 
         System.out.println(ObjMenu);
-        if (selectMenu != null) {
-            showCantidad();
-        }else {
+        if (selectMenu == null) {
             System.exit(0);
         }
+        showCantidad();
     }
 
     public static void showCantidad(){
