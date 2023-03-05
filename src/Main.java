@@ -1,3 +1,7 @@
+import Clases.Moneda;
+import Clases.Temperatura;
+import Dominio.Conversion;
+
 import javax.swing.*;
 
 public class Main {
@@ -6,23 +10,30 @@ public class Main {
     static String inConversion;
 
     public static void main(String[] args) {
-        showMenu();
+        Conversion BloqueTipos = new Conversion();
+
+        Moneda PEN = new Moneda("PEN");
+        Temperatura Celsius = new Temperatura("Celsius");
+
+        BloqueTipos.addTipo("Moneda",PEN);
+        BloqueTipos.addTipo("Temperatura",Celsius);
+
+        PEN.addValue("PEN",3.7685);
+
+        showMenu(BloqueTipos);
     }
 
-    public static void showMenu(){
-        String[] opciones ={
-                "Conversor de Moneda",
-                "Conversor de Temperatura",
-                "Más"};
+    public static void showMenu(Conversion bloque){
+        String[] opciones = bloque.getTipos().keySet().toArray(new String[0]);
 
-        selectMenu = (String) JOptionPane.showInputDialog(
+        selectMenu =(String) JOptionPane.showInputDialog(
                 null,
                 "Seleccione una opción de conversión",
                 "Menu",
                 JOptionPane.PLAIN_MESSAGE,
                 null,
                 opciones,
-                opciones[0]);
+                opciones);
 
         if (selectMenu != null) {
             showCantidad();
@@ -37,7 +48,7 @@ public class Main {
                 "Ingrese la cantidad de dinero que deseas convertir");
 
             if (provCantidad ==null){
-                showMenu();
+                //showMenu();
             }
 
             inCantidad = Double.parseDouble(provCantidad);
@@ -99,7 +110,7 @@ public class Main {
                 JOptionPane.YES_NO_CANCEL_OPTION);
 
         if (result == JOptionPane.YES_OPTION) {
-            showMenu();
+            //showMenu();
         } else {
             JOptionPane.showMessageDialog(null, "Programa Finalizado");
             System.exit(0);

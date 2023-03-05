@@ -10,7 +10,7 @@ public class Conversion {
     }
 
     public Map<String, PadreConversion> getTipos() {
-        return tipos;
+        return this.tipos;
     }
 
     public void addTipo(String nombre, PadreConversion tipo){
