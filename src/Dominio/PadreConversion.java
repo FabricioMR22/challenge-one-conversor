@@ -1,11 +1,12 @@
 package Dominio;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public abstract class PadreConversion {
      private String name;
-     private Map<String,Double> values = new HashMap<>();
+     private Map<String,Double> values = new LinkedHashMap<>();
 
      public PadreConversion(String name) {
           this.name = name;

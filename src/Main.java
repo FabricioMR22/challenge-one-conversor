@@ -1,32 +1,39 @@
 import Clases.Moneda;
 import Clases.Temperatura;
 import Dominio.Conversion;
+import Dominio.PadreConversion;
 
 import javax.swing.*;
 
 public class Main {
-    static String selectMenu;
+    static PadreConversion ObjMenu;
     static double inCantidad;
     static String inConversion;
+    static boolean inChange;
+
+    static Conversion BloqueTipos = new Conversion();
 
     public static void main(String[] args) {
-        Conversion BloqueTipos = new Conversion();
-
         Moneda PEN = new Moneda("PEN");
         Temperatura Celsius = new Temperatura("Celsius");
 
         BloqueTipos.addTipo("Moneda",PEN);
         BloqueTipos.addTipo("Temperatura",Celsius);
 
-        PEN.addValue("PEN",3.7685);
+        PEN.addValue("USD",3.7685);
+        PEN.addValue("EUR",4.0067);
+        PEN.addValue("GBP",4.5373);
+        PEN.addValue("YEN",0.02773);
+        PEN.addValue("WON",0.002908);
 
-        showMenu(BloqueTipos);
+        Celsius.addValue("Fahrenheit",33.8);
+        showMenu();
     }
 
-    public static void showMenu(Conversion bloque){
-        String[] opciones = bloque.getTipos().keySet().toArray(new String[0]);
+    public static void showMenu(){
+        String[] opciones = BloqueTipos.getTipos().keySet().toArray(new String[0]);
 
-        selectMenu =(String) JOptionPane.showInputDialog(
+        String selectMenu =(String) JOptionPane.showInputDialog(
                 null,
                 "Seleccione una opción de conversión",
                 "Menu",
@@ -35,6 +42,14 @@ public class Main {
                 opciones,
                 opciones);
 
+        BloqueTipos.getTipos().forEach(
+                (s, conversion) -> {
+                    if (s == selectMenu) {
+                        ObjMenu = conversion;
+                    }
+                }
+        );
+        System.out.println(ObjMenu);
         if (selectMenu != null) {
             showCantidad();
         }else {
@@ -48,7 +63,7 @@ public class Main {
                 "Ingrese la cantidad de dinero que deseas convertir");
 
             if (provCantidad ==null){
-                //showMenu();
+                showMenu();
             }
 
             inCantidad = Double.parseDouble(provCantidad);
@@ -65,11 +80,7 @@ public class Main {
     }
 
     public static void showTipo(){
-        String[] conversiones = {
-                "De Soles a Dólar",
-                "De Soles a Euro",
-                "De Dólar a Soles",
-                "De Euro a Soles"};
+        String[] conversiones = ObjMenu.getValues().keySet().toArray(new String[0]);
 
         inConversion = (String) JOptionPane.showInputDialog(
                 null,
@@ -80,25 +91,39 @@ public class Main {
                 conversiones,
                 conversiones[0]);
 
+        System.out.println(inConversion);
+
         if (inConversion !=null){
-            showResult();
+            showChange();
         }else{
             showCantidad();
         }
     }
 
+    public static void showChange(){
+        String[] opciones = {"Cambiar PEN a "+inConversion, "Cambiar " + inConversion+ " a PEN"};
+        int seleccion = JOptionPane.showOptionDialog(
+                null,
+                "Selecciona una opción",
+                "Cambiar moneda",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                opciones,
+                opciones[0]
+        );
+        inChange = (seleccion == 0);
+        System.out.println("El usuario ha seleccionado " + (inChange ? "PEN a "+inConversion: inConversion+" a PEN"));
+        showResult();
+    }
+
     public static void showResult(){
-        if (inConversion == "De Soles a Dólar") {
-            JOptionPane.showMessageDialog(
+        String moneda = inChange? inConversion : "PEN";
+        JOptionPane.showMessageDialog(
                     null,
-                    "Tienes $ "
-                            + String.format("%.2f", inCantidad / 3.90)  + " Dolares");
-        }else {
-            JOptionPane.showMessageDialog(
-                    null,
-                    "Tienes <Dominio.Conversion> "
-                            + inCantidad * 10 + " Falta");
-        }
+                    "Tienes "
+                            + String.format("%.2f",
+                            ObjMenu.Change(inCantidad,inConversion,inChange))  +" "+ moneda);
         optionFinal();
     }
 
@@ -110,7 +135,7 @@ public class Main {
                 JOptionPane.YES_NO_CANCEL_OPTION);
 
         if (result == JOptionPane.YES_OPTION) {
-            //showMenu();
+            showMenu();
         } else {
             JOptionPane.showMessageDialog(null, "Programa Finalizado");
             System.exit(0);
