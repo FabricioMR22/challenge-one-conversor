@@ -1,11 +1,9 @@
 import javax.swing.*;
 
 public class Main {
-
     static String selectMenu;
     static double inCantidad;
     static String inConversion;
-
 
     public static void main(String[] args) {
         showMenu();
@@ -25,8 +23,6 @@ public class Main {
                 null,
                 opciones,
                 opciones[0]);
-
-        System.out.println(selectMenu);
 
         if (selectMenu != null) {
             showCantidad();
@@ -89,7 +85,7 @@ public class Main {
         }else {
             JOptionPane.showMessageDialog(
                     null,
-                    "Tienes <Conversion> "
+                    "Tienes <Dominio.Conversion> "
                             + inCantidad * 10 + " Falta");
         }
         optionFinal();
