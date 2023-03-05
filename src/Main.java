@@ -57,23 +57,9 @@ public class Main {
 
     public static void showTipo(){
         String[] conversiones = ObjMenu.getValues().keySet().toArray(new String[0]);
-
-        inConversion = (String) JOptionPane.showInputDialog(
-                null,
-                "Elije la moneda a la que deseas convertir tu dinero",
-                "Monedas",
-                JOptionPane.PLAIN_MESSAGE,
-                null,
-                conversiones,
-                conversiones[0]);
-
-        System.out.println(inConversion);
-
-        if (inConversion !=null){
-            showChange();
-        }else{
-            showCantidad();
-        }
+        inConversion = (String) JOptionPane.showInputDialog(null, "Elije la moneda a la que deseas convertir tu dinero", "Monedas", JOptionPane.PLAIN_MESSAGE, null, conversiones, conversiones[0]);
+        if (inConversion ==null) showCantidad();
+        showChange();
     }
 
     public static void showChange(){
