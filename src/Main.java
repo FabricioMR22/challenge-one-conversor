@@ -36,31 +36,21 @@ public class Main {
         String selectMenu =(String) JOptionPane.showInputDialog(null, "Seleccione una opción de conversión", "Menu", JOptionPane.PLAIN_MESSAGE, null, opciones, opciones);
         ObjMenu = BloqueTipos.getTipos().get(selectMenu);
 
-        System.out.println(ObjMenu);
-        if (selectMenu == null) {
-            System.exit(0);
-        }
+        if (selectMenu == null) System.exit(0);
         showCantidad();
     }
 
     public static void showCantidad(){
         try{
-            String provCantidad =JOptionPane.showInputDialog(null,
-                "Ingrese la cantidad de dinero que deseas convertir");
+            String provCantidad =JOptionPane.showInputDialog(null, "Ingrese la cantidad de dinero que deseas convertir");
 
-            if (provCantidad ==null){
-                showMenu();
-            }
-
+            if (provCantidad ==null) showMenu();
             inCantidad = Double.parseDouble(provCantidad);
-            if (inCantidad<=0){
-                throw new NumberFormatException();
-            }
+            if (inCantidad<=0) throw new NumberFormatException();
             showTipo();
 
         }catch (NumberFormatException e){
-            JOptionPane.showMessageDialog(null,
-                    "Ingresa una cantidad correcta");
+            JOptionPane.showMessageDialog(null, "Ingresa una cantidad correcta");
             showCantidad();
         }
     }
