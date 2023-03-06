@@ -17,6 +17,8 @@ Este es un programa en Java que permite convertir diferentes tipos de monedas y 
 
 Al ejecutar el programa, se mostrará un menú para seleccionar el tipo de conversión que se desea realizar: monedas o temperaturas. Luego, se solicitará al usuario la cantidad de la moneda o temperatura que se desea convertir y el tipo de conversión que se desea realizar (por ejemplo, convertir de PEN a USD o de Celsius a Fahrenheit). Por último, se mostrará el resultado de la conversión y se preguntará al usuario si desea continuar convirtiendo.
 
+![uso.gif](src%2FresourcesMD%2Fuso.gif)
+
 ## Estructura del código
 ![class.png](src%2FresourcesMD%2Fclass.png)
 
@@ -35,15 +37,15 @@ Las contribuciones son bienvenidas. Si desea contribuir, siga los siguientes pas
 1. Realice un fork del repositorio.
 2. Cree una rama con la nueva funcionalidad: 
     ```bash
-   git checkout -b nueva-funcionalidad.
+   git checkout -b nueva-funcionalidad
     ```
 3. Realice los cambios necesarios y haga los commits correspondientes:
     ```bash
-    git commit -am 'Agregada nueva funcionalidad'.
+    git commit -am 'Agregada nueva funcionalidad'
     ```
 4. Haga push a la rama:
     ```bash
-   git push origin nueva-funcionalidad.
+   git push origin nueva-funcionalidad
     ```
 5. Abra un Pull Request en GitHub.
 
