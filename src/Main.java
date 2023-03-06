@@ -20,11 +20,14 @@ public class Main {
         BloqueTipos.addTipo("Moneda",PEN);
         BloqueTipos.addTipo("Temperatura",Celsius);
 
+        //Introducir unidad de moneda a PEN(Soles peruanos)
         PEN.addValue("USD",3.7685);
         PEN.addValue("EUR",4.0067);
         PEN.addValue("GBP",4.5373);
         PEN.addValue("YEN",0.02773);
         PEN.addValue("WON",0.002908);
+        PEN.addValue("MXN",0.21);
+        PEN.addValue("BRL - Real Brasileño",0.73);
 
         Celsius.addValue("Fahrenheit",33.8);
         showMenu();

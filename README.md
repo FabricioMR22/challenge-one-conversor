@@ -15,9 +15,13 @@ Este es un programa en Java que permite convertir diferentes tipos de monedas y 
 
 ## Uso
 
-Al ejecutar el programa, se mostrará un menú para seleccionar el tipo de conversión que se desea realizar: monedas o temperaturas. Luego, se solicitará al usuario la cantidad de la moneda o temperatura que se desea convertir y el tipo de conversión que se desea realizar (por ejemplo, convertir de PEN a USD o de Celsius a Fahrenheit). Por último, se mostrará el resultado de la conversión y se preguntará al usuario si desea continuar convirtiendo.
+- Al ejecutar el programa, se mostrará un menú para seleccionar el tipo de conversión que se desea realizar: monedas o temperaturas.
+- Luego, se solicitará al usuario la cantidad de la moneda o temperatura que se desea convertir y el tipo de conversión que se desea realizar (por ejemplo, convertir de PEN a USD o de Celsius a Fahrenheit).
+- Por último, se mostrará el resultado de la conversión y se preguntará al usuario si desea continuar convirtiendo.
 
-![uso.gif](src%2FresourcesMD%2Fuso.gif)
+<div style="text-align:center">
+  <img src="src/resourcesMD/uso.gif" alt="uso">
+</div>
 
 ## Estructura del código
 ![class.png](src%2FresourcesMD%2Fclass.png)
@@ -27,6 +31,10 @@ Al ejecutar el programa, se mostrará un menú para seleccionar el tipo de conve
 - Clase Conversion: Es una clase que contiene un mapa de los diferentes tipos de conversión (monedas, temperaturas, etc.) y sus valores.
 - Clase Moneda: Es una clase que extiende de PadreConversion y se encarga de realizar las conversiones de monedas.
 - Clase Temperatura: Es una clase que extiende de PadreConversion y se encarga de realizar las conversiones de temperaturas.
+
+## Introducir nuevos valores
+
+![intro.gif](src%2FresourcesMD%2Fintro.gif)
 
 ## Flujo de ejecución
 ![flowclass.png](src%2FresourcesMD%2Fflowclass.png)
